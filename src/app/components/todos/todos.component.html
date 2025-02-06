@@ -1,0 +1,18 @@
+<div class="container ">
+    <h3 class="text-center mb-3">Todo List by Yash </h3>
+
+<app-ad-todo (todoAdd)="addTodo($event)" ></app-ad-todo>
+<h4>Your Todos</h4>
+<div *ngIf="this.todos.length===0; else elseBlock">No Todos to display</div>
+<ng-template #elseBlock>
+<div *ngFor="let todo of todos; index as i">
+<app-todos-item [todo]="todo" [tabIndex]="i" (todoDelete)="deleteTodo($event)" (todoCheckBox)="toggleTodo($event)"></app-todos-item>
+</div>
+</ng-template>
+</div>
+
+<!-- addTodo(todo: Todo) {
+    console.log("Adding Todo:", todo);
+    this.todos.push(todo);
+    localStorage.setItem("todos",JSON.stringify(this.todos));
+} -->
